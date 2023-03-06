@@ -22,7 +22,7 @@ if ($result->num_rows == 1) {
 		// Set session variable
 		$_SESSION['username'] = $username;
 		// Redirect to home page
-		header("Location: index.php?login=success");
+		header("Location: ../index.php?login=success");
 		exit();
 	} else {
 		echo "Invalid login credentials";

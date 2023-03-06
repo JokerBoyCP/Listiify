@@ -12,7 +12,7 @@ require "header.php";
             <input type="text" name="mail" placeholder="Email">
             <input type="password" name="pwd" placeholder="Password">
             <input type="password" name="pwd-repeat" placeholder="Repeat password">
-            <button type="submit" name="signup-submit">Signup</button>
+            <button type="submit" name="signup-submit" >Signup</button>
         </form>
     </div>
 </main>
