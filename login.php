@@ -4,7 +4,8 @@ require "header.php";
 
 ?>
 
-<main>
+<main style="background: rgb(255,255,255);
+background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(169,186,230,1) 100%);">
     <div class="wrapper-main">
         <h1>Login</h1>
         <form action="includes/login.inc.php" method="post">

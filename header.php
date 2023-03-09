@@ -3,7 +3,9 @@
 
 <?php
 session_start();
-if (isset($_POST['username'])) {echo $_SESSION['username'] .  " is logged in!";}
+if (!$_SESSION == NULL) {
+    echo $_SESSION['username'] .  " is logged in!";
+}
 ?>
 
 <head>
@@ -27,7 +29,7 @@ if (isset($_POST['username'])) {echo $_SESSION['username'] .  " is logged in!";}
             </span>
 
             <?php
-            
+
             if ($_SESSION == NULL) {
 
             ?>

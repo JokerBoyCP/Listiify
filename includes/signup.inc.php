@@ -48,4 +48,5 @@ if (isset($_POST['signup-submit'])) {
 	}
 
 	$conn->close();
+	header('Location: ../index.php');
 }

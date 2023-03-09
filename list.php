@@ -1,7 +1,7 @@
 <?php
 
 require "header.php";
-
+if (!$_SESSION == NULL) {
 ?>
 
 <main>
@@ -134,5 +134,7 @@ require "header.php";
 <?php
 
 require "footer.php";
-
+}else{
+  echo "Login to access this page!";
+}
 ?>
