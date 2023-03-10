@@ -4,7 +4,7 @@
 <?php
 session_start();
 if (!$_SESSION == NULL) {
-    echo $_SESSION['username'] .  " is logged in!";
+    echo $_SESSION['username'] . " is logged in!";
 }
 ?>
 
@@ -32,7 +32,7 @@ if (!$_SESSION == NULL) {
 
             if ($_SESSION == NULL) {
 
-            ?>
+                ?>
 
                 <nav>
                     <ul class="nav-links">
@@ -49,12 +49,12 @@ if (!$_SESSION == NULL) {
                 <a href="signup.php"><button>SIGNUP</button></a>
 
 
-            <?php
+                <?php
 
             } else {
                 // Logged in
-
-            ?>
+            
+                ?>
 
                 <nav>
                     <ul class="nav-links">
@@ -68,7 +68,7 @@ if (!$_SESSION == NULL) {
 
 
 
-            <?php
+                <?php
             }
             ?>
         </header>
