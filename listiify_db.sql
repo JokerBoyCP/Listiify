@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 07. Mrz 2023 um 16:55
--- Server-Version: 10.4.27-MariaDB
--- PHP-Version: 8.2.0
+-- Erstellungszeit: 16. Mrz 2023 um 15:55
+-- Server-Version: 10.4.24-MariaDB
+-- PHP-Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `lists` (
   `list_id` int(11) NOT NULL,
   `idUsers` int(11) NOT NULL,
   `list_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -43,7 +43,7 @@ CREATE TABLE `tasks` (
   `task_id` int(11) NOT NULL,
   `list_id` int(11) NOT NULL,
   `task` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -53,18 +53,21 @@ CREATE TABLE `tasks` (
 
 CREATE TABLE `users` (
   `idUsers` int(11) NOT NULL,
-  `uidUsers` tinytext NOT NULL,
-  `emailUsers` tinytext NOT NULL,
-  `pwdUsers` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `uidUsers` varchar(30) NOT NULL,
+  `emailUsers` varchar(80) NOT NULL,
+  `pwdUsers` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `users`
 --
 
 INSERT INTO `users` (`idUsers`, `uidUsers`, `emailUsers`, `pwdUsers`) VALUES
-(2, 'test', 'test@test.com', '$2y$10$jkcLYm.jD5bYBIrrf/yFn.xygjNq4MsTLdvoGwceq78tLiuA7xwli'),
-(4, 'JokerBoyCP', 'claudio.pacheco98@hotmail.com', '$2y$10$yMAB1SyB3FfdEA6.a.3JtutYQ1BQ6zL6anAbnsbN4hld4ub60Nxie');
+(2, 'test', 'test@test.com', '$2y$10$jkcLYm.jD5bYBIrrf/yFn.xygjNq4MsTL'),
+(4, 'JokerBoyCP', 'claudio.pacheco98@hotmail.com', '$2y$10$yMAB1SyB3FfdEA6.a.3JtutYQ1BQ6zL6a'),
+(5, 'Jannick', 'Jannick@gmail.com', '$2y$10$KV3RnE0GVBcxvdL5g7AAnOa4mNL0TK2OZ'),
+(6, 'daniel', 'd@b.ch', '$2y$10$8fzJ93znJpYjWVarEFUP1Ourd6/zxma49'),
+(8, 'claudio', 'c.p@c.com', '$2y$10$rLQ9YPZQrTeNQxOKjtnzieDtwBKwKyTnL');
 
 --
 -- Indizes der exportierten Tabellen
@@ -110,7 +113,7 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
-  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints der exportierten Tabellen

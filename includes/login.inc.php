@@ -3,17 +3,17 @@
 require 'db_connector.inc.php';
 
 if (isset($_POST['login-submit'])) {
-session_start();
+	session_start();
 
-// Get form data
-$username = $_POST['username'];
-$password = $_POST['pwd'];
+	// Get form data
+	$username = $_POST['username'];
+	$password = $_POST['pwd'];
 
-// Get user from database
-$stmt = $conn->prepare("SELECT * FROM users WHERE uidUsers=?");
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
+	// Get user from database
+	$stmt = $conn->prepare("SELECT * FROM users WHERE uidUsers=?");
+	$stmt->bind_param("s", $username);
+	$stmt->execute();
+	$result = $stmt->get_result();
 
 if ($result->num_rows == 1) {
 	// Verify password
@@ -29,11 +29,9 @@ if ($result->num_rows == 1) {
 	} else {
 		echo "Invalid login credentials";
 	}
-} else {
-	echo "Invalid login credentials";
-}
 
 
 
 $conn->close();
+}
 }

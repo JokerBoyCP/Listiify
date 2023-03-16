@@ -8,11 +8,11 @@ require "header.php";
     <div class="wrapper-main">
         <h1>Signup</h1>
         <form action="includes/signup.inc.php" method="post">
-            <input type="text" name="uid" placeholder="Username">
-            <input type="text" name="mail" placeholder="Email">
-            <input type="password" name="pwd" placeholder="Password">
-            <input type="password" name="pwd-repeat" placeholder="Repeat password">
-            <button type="submit" name="signup-submit" >Signup</button>
+            <input type="text" name="uid" placeholder="Username" maxlength="30" required>
+            <input type="text" name="mail" placeholder="Email" maxlength="80" required>
+            <input type="password" name="pwd" placeholder="Password" maxlength="40" required>
+            <input type="password" name="pwd-repeat" placeholder="Repeat password" maxlength="40" required>
+            <button type="submit" name="signup-submit">Signup</button>
         </form>
     </div>
 </main>
@@ -49,8 +49,6 @@ require "header.php";
         font-size: 16px;
         background-color: #f2f2f2;
     }
-
-    
 </style>
 
 <?php
