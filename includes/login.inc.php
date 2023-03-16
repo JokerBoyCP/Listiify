@@ -18,9 +18,11 @@ $result = $stmt->get_result();
 if ($result->num_rows == 1) {
 	// Verify password
 	$row = $result->fetch_assoc();
+	print_r($row);
 	if (password_verify($password, $row['pwdUsers'])) {
 		// Set session variable
 		$_SESSION['username'] = $username;
+		$_SESSION['idUsers'] = $row['idUsers'];
 		// Redirect to home page
 		header("Location: ../index.php?login=success");
 		exit();
@@ -30,6 +32,8 @@ if ($result->num_rows == 1) {
 } else {
 	echo "Invalid login credentials";
 }
+
+
 
 $conn->close();
 }

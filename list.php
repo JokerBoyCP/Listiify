@@ -1,6 +1,7 @@
 <?php
 
 require "header.php";
+require 'includes/db_connector.inc.php';
 if (!$_SESSION == NULL) {
 ?>
 
@@ -81,7 +82,7 @@ if (!$_SESSION == NULL) {
 
   // Display list of user's lists
   $user_id = $_SESSION['idUsers'];
-  $stmt = $conn->prepare("SELECT * FROM lists WHERE isUsers = ?");
+  $stmt = $conn->prepare("SELECT * FROM lists WHERE idUsers = ?");
   $stmt->bind_param("i", $user_id);
   $stmt->execute();
   $result = $stmt->get_result();
@@ -128,6 +129,8 @@ if (!$_SESSION == NULL) {
     padding: 10px;
     font-size: 16px;
     background-color: #f2f2f2;
+    display: flex;
+    justify-content: end;
   }
 </style>
 
