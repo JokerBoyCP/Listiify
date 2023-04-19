@@ -11,11 +11,11 @@ Database import:
 ![image](https://user-images.githubusercontent.com/99121408/233115166-dcc140d5-d2c5-4395-a76b-57503d060b7a.png)
 
 
-//Create an DB user
+//Create an DB user.
 CREATE USER 'listiify'@'localhost' IDENTIFIED BY 'BBZBL12345';
 
 
 
-//Give the user permissions on the 
+//Give the user permissions on the .
 GRANT USAGE ON *.* TO `listiify`@`localhost` IDENTIFIED BY PASSWORD '*A3194D9B7702C833857AA6257D7E2D53E252C44A';
 GRANT SELECT, INSERT, UPDATE, DELETE ON `listiify_db`.* TO `listiify`@`localhost`;
