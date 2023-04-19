@@ -6,7 +6,7 @@ require "header.php";
 
 <main>
     <div class="wrapper-main">
-        <h1>Signup</h1>
+        <h1>Change Password</h1>
         <form action="includes/change_pw.inc.php" method="post">
             <input type="password" name="current-pwd" placeholder="Current Password" maxlength="40" required>
             <input type="password" name="new-pwd" placeholder="New password" maxlength="40" required>
