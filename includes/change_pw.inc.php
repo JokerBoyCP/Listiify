@@ -1,19 +1,22 @@
 <?php
 
 require 'db_connector.inc.php';
+session_start();
+
 
 if (isset($_POST['change-submit'])) {
+    $username = $_SESSION['username'];
     $current_password = $_POST['current-pwd'];
 	$new_password = $_POST['new-pwd'];
 	$confirm_password = $_POST['new-pwd-repeat'];
 
 	// Get current user from database
 	$stmt = $conn->prepare("SELECT * FROM users WHERE uidUsers=?");
-	$stmt->bind_param("s", $_SESSION['username']);
+	$stmt->bind_param("s", $username);
 	$stmt->execute();
 	$result = $stmt->get_result();
 	$row = $result->fetch_assoc();
-}
+
 
 	 if (password_verify($current_password, $row['pwdUsers'])) {
         // Check if new password and confirm password match
@@ -27,7 +30,7 @@ if (isset($_POST['change-submit'])) {
             if ($stmt->execute() === TRUE) {
                 echo "Password changed successfully";
             } else {
-                echo "Error updating password: " . $conn->error;
+                echo "Error updating password: " . $stmt->error;
             }
         } else {
             echo "New password and confirm password do not match";
