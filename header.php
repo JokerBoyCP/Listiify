@@ -61,10 +61,12 @@ if (!$_SESSION == NULL) {
                         <li><a href="index.php">Home</a></li>
                         <li><a href="about.php">About</a></li>
                         <li><a href="list.php">MyList</a></li>
+                        
                     </ul>
                 </nav>
 
                 <a href="includes/logout.inc.php"><button>LOGOUT</button></a>
+                <a href="change_pw.php"><button>CHANGE PASSWORD</button></a>
 
 
 
