@@ -41,14 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Add a new task for the user
     $task = $_POST['task'];
     $user_id = $_SESSION['idUsers'];
-    // echo $user_id, $task;
-    // $sql = "INSERT INTO tasks (user_id, task) VALUES ($user_id, $task)";
-    // mysqli_query($conn, $sql);
-    // Check if email is taken
-	$stmt = $conn->prepare("INSERT INTO tasks (user_id, task) VALUES (?,?)");
-	$stmt->bind_param("ss", $user_id, $task);
-	$stmt->execute();
-  $stmt->close();
+
+	  $stmt = $conn->prepare("INSERT INTO tasks (user_id, task) VALUES (?,?)");
+	  $stmt->bind_param("ss", $user_id, $task);
+	  $stmt->execute();
+    $stmt->close();
   } elseif (isset($_POST['delete'])) {
     // Delete a task for the user
     $id = $_POST['id'];
@@ -59,8 +56,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-// Display the user's tasks in a table
+
 ?>
+
+// Display the user's tasks in a table
 
 <style>
   body {
