@@ -9,6 +9,16 @@ if (isset($_POST['signup-submit'])) {
 	$password = $_POST['pwd'];
 	$confirm_password = $_POST['pwd-repeat'];
 
+	$uppercase = preg_match('@[A-Z]@', $password);
+	$lowercase = preg_match('@[a-z]@', $password);
+	$number    = preg_match('@[0-9]@', $password);
+	$specialChars = preg_match('@[^\w]@', $password);
+
+
+	if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+	echo "<script>alert('Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.');</script>";
+	}else{
+
 	// Check if username is taken
 	$stmt = $conn->prepare("SELECT * FROM users WHERE uidUsers=?");
 	$stmt->bind_param("s", $username);
@@ -49,4 +59,5 @@ if (isset($_POST['signup-submit'])) {
 
 	$conn->close();
 	header('Location: ../index.php');
+}
 }

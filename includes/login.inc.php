@@ -18,7 +18,13 @@ if (isset($_POST['login-submit'])) {
 if ($result->num_rows == 1) {
 	// Verify password
 	$row = $result->fetch_assoc();
-	print_r($row);
+	// print_r($row);
+	echo ' ';
+	echo $password;
+	echo ' ';
+	echo $row['pwdUsers'];
+	echo ' '. 
+	$password_hashed = password_hash($password, PASSWORD_DEFAULT);
 	if (password_verify($password, $row['pwdUsers'])) {
 		// Set session variable
 		$_SESSION['username'] = $username;

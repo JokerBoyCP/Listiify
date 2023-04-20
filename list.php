@@ -20,17 +20,17 @@ if (!$_SESSION == NULL) {
       </tr>
     </thead>
     <tbody>
-      <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-        <tr>
-          <td><?php echo $row['task']; ?></td>
+      <?php //while ($row = mysqli_fetch_assoc(<$result)) { ?>
+        <!-- <tr>
+          <td><?php //echo $row['task']; ?></td>
           <td>
             <form method="post">
               <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
               <button type="submit" name="delete">Delete</button>
             </form>
           </td>
-        </tr>
-      <?php } ?>
+        </tr> -->
+      <?php //} ?>
     </tbody>
   </table>
 </body>
@@ -40,9 +40,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (isset($_POST['add'])) {
     // Add a new task for the user
     $task = $_POST['task'];
-    $user_id = $_SESSION['user_id'];
-    $sql = "INSERT INTO tasks (user_id, task) VALUES ($user_id, '$task')";
-    mysqli_query($conn, $sql);
+    $user_id = $_SESSION['idUsers'];
+    // echo $user_id, $task;
+    // $sql = "INSERT INTO tasks (user_id, task) VALUES ($user_id, $task)";
+    // mysqli_query($conn, $sql);
+    // Check if email is taken
+	$stmt = $conn->prepare("INSERT INTO tasks (user_id, task) VALUES (?,?)");
+	$stmt->bind_param("ss", $user_id, $task);
+	$stmt->execute();
+  $stmt->close();
   } elseif (isset($_POST['delete'])) {
     // Delete a task for the user
     $id = $_POST['id'];
@@ -52,15 +58,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 
-// Retrieve the user's tasks from the database
-$user_id = $_SESSION['idUsers'];
-$sql = "SELECT * FROM tasks WHERE user_id = $user_id";
-$result = mysqli_query($conn, $sql);
 
 // Display the user's tasks in a table
 ?>
 
-  
 <style>
   body {
     font-family: Arial, sans-serif;

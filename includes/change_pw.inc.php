@@ -17,6 +17,14 @@ if (isset($_POST['change-submit'])) {
 	$result = $stmt->get_result();
 	$row = $result->fetch_assoc();
 
+    $uppercase = preg_match('@[A-Z]@', $new_password);
+	$lowercase = preg_match('@[a-z]@', $new_password);
+	$number    = preg_match('@[0-9]@', $new_password);
+	$specialChars = preg_match('@[^\w]@', $new_password);
+
+
+	if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($new_password) < 8) {
+	echo "<script>alert('Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.');</script>"; ;
 
 	 if (password_verify($current_password, $row['pwdUsers'])) {
         // Check if new password and confirm password match
